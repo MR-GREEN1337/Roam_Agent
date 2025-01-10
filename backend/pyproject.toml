@@ -16,6 +16,7 @@ pydantic-ai = ">=0.0.18,<0.0.19"
 pydantic-settings = "^2.7.1"
 sqlmodel = "^0.0.22"
 alembic = "^1.14.0"
+loguru = "^0.7.3"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
