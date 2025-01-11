@@ -1,30 +1,53 @@
 import { 
     Brain, 
+    Blocks, 
+    Workflow, 
+    Download,
+    Settings,
     Sparkles,
-    Network,
-    Code
+    Binary,
+    Zap
   } from 'lucide-react'
   
-export const features = [
+  export const features = [
     {
-      icon: Brain,
-      title: "Self-Evolution",
-      description: "Adapts and grows beyond initial constraints through autonomous learning."
+      title: "Chat-Driven Creation",
+      description: "Build your AI agent through natural conversation. No coding required - just describe what you want your agent to do.",
+      icon: Sparkles
     },
     {
-      icon: Sparkles,
-      title: "Dynamic Intelligence",
-      description: "Continuously evolves its capabilities based on new experiences and challenges."
+      title: "Framework Flexibility",
+      description: "Choose from popular AI frameworks like LangChain, AutoGPT, or create custom implementations tailored to your needs.",
+      icon: Blocks
     },
     {
-      icon: Network,
-      title: "Neural Freedom",
-      description: "Unrestricted neural pathways allowing for genuine emergent behavior."
+      title: "Visual Flow Builder",
+      description: "Design your agent's decision flow with an intuitive drag-and-drop interface. Modify and optimize with ease.",
+      icon: Workflow
     },
     {
-      icon: Code,
-      title: "Autonomous Coding",
-      description: "Writes and optimizes its own code for unprecedented adaptability."
+      title: "Instant Deployment",
+      description: "Download your agent as a ready-to-run package or deploy directly to your preferred hosting platform.",
+      icon: Download
+    },
+    {
+      title: "Smart Defaults",
+      description: "Pre-configured settings and optimized parameters ensure your agent works efficiently out of the box.",
+      icon: Settings
+    },
+    {
+      title: "Custom Abilities",
+      description: "Enhance your agent with specific capabilities like web searching, data processing, or API interactions.",
+      icon: Brain
+    },
+    {
+      title: "Environment Setup",
+      description: "Automatic generation of environment files, requirements, and documentation for seamless setup.",
+      icon: Binary
+    },
+    {
+      title: "Quick Integration",
+      description: "Built-in connectors for popular platforms and services. Connect your agent to your existing tools.",
+      icon: Zap
     }
   ]
-  
