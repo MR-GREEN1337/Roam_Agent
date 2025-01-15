@@ -2,6 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { AgentConfig } from '@/lib/types';
 import { Background, Controls, MiniMap, ReactFlow, Handle, Position, NodeProps } from '@xyflow/react';
 import { Network } from 'lucide-react';
+import '@xyflow/react/dist/style.css';
 
 // Custom Node Component
 const CustomNode = ({ data, type }: NodeProps) => {

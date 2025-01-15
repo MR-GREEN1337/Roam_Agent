@@ -2,6 +2,7 @@ import { Hero } from '@/components/Hero'
 import { Features } from '@/components/Features'
 import { FloatingNodes } from '@/components/FloatingNodes'
 import { Navigation } from '@/components/Navigation'
+import { Footer } from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <FloatingNodes />
       <Hero />
       <Features />
+      <Footer />
     </main>
   )
 }

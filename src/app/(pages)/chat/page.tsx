@@ -28,6 +28,8 @@ import DeploymentDialog from './_components/DeploymentDialog';
 import { ChatNavigation } from './_components/ChatNavigation';
 import MessageBubble from './_components/MessageBubble';
 import FloatingButton from './_components/FloatingButton';
+import Cookies from 'js-cookie';
+import WelcomeDialog from './_components/WelcomeDialog';
 
 // Background Component
 const ParticleBackground: React.FC = () => (
@@ -56,6 +58,7 @@ export default function ChatPage() {
     const [showConfigure, setShowConfigure] = useState(false);
     const [showCodeGen, setShowCodeGen] = useState(false);
     const [showDeploy, setShowDeploy] = useState(false);
+    const [showWelcome, setShowWelcome] = useState(false);
 
     const [agentConfig, setAgentConfig] = useState<AgentConfig>({
         goal: '',
@@ -76,23 +79,46 @@ export default function ChatPage() {
         scrollToBottom();
     }, [messages]);
 
+    useEffect(() => {
+        const apiKey = Cookies.get('llmApiKey');
+        if (!apiKey) {
+            setShowWelcome(true);
+        }
+    }, []);
+
 // Update the handleSend function in your ChatPage component
 
 const handleSend = async () => {
     if (!inputMessage.trim()) return;
 
-    const newMessage: Message = {
+    const newMessage = {
         id: Date.now().toString(),
         content: inputMessage,
         type: 'user',
         timestamp: new Date()
     };
 
-    setMessages(prev => [...prev, newMessage]);
+    setMessages(prev => [...prev, newMessage as Message]);
     setInputMessage('');
 
+    // Get LLM configuration from cookies
+    const provider = Cookies.get('llmProvider');
+    const model = Cookies.get('llmModel');
+    const apiKey = Cookies.get('llmApiKey');
+
+    if (!provider || !model || !apiKey) {
+        setShowWelcome(true);
+        const errorMessage = {
+            id: Date.now().toString(),
+            content: 'Please configure your AI provider settings to start chatting.',
+            type: 'assistant',
+            timestamp: new Date()
+        };
+        setMessages(prev => [...prev, errorMessage as Message]);
+        return;
+    }
+
     try {
-        // Call the API with the current message and agent config
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
@@ -101,29 +127,31 @@ const handleSend = async () => {
             body: JSON.stringify({
                 agent_config: agentConfig,
                 user_request: inputMessage,
+                llm_config: {
+                    provider,
+                    model,
+                    apiKey
+                }
             }),
         });
 
         if (!response.ok) {
-            throw new Error('Failed to process agent configuration');
+            throw new Error('Failed to process request');
         }
 
         const data = await response.json();
 
-        // Update agent configuration
         setAgentConfig(data.agent_config);
 
-        // Add AI response to messages
-        const aiMessage: Message = {
+        const aiMessage = {
             id: Date.now().toString(),
-            content: data.user_request,
+            content: data.response_message,
             type: 'assistant',
             timestamp: new Date()
         };
 
-        setMessages(prev => [...prev, aiMessage]);
+        setMessages(prev => [...prev, aiMessage as Message]);
 
-        // Handle UI actions if any
         if (data.ui_action) {
             switch (data.ui_action.type) {
                 case 'show_graph':
@@ -143,15 +171,14 @@ const handleSend = async () => {
     } catch (error) {
         console.error('Error processing message:', error);
         
-        // Add error message
-        const errorMessage: Message = {
+        const errorMessage = {
             id: Date.now().toString(),
             content: 'Sorry, there was an error processing your request. Please try again.',
             type: 'assistant',
             timestamp: new Date()
         };
 
-        setMessages(prev => [...prev, errorMessage]);
+        setMessages(prev => [...prev, errorMessage as Message]);
     }
 };
 
@@ -309,6 +336,10 @@ const handleSend = async () => {
                 open={showDeploy}
                 onOpenChange={setShowDeploy}
             />
+
+            {showWelcome && (
+                <WelcomeDialog open={showWelcome} onOpenChange={setShowWelcome} />
+            )}
 
             {/* Custom Scrollbar Styles */}
             <style jsx global>{`

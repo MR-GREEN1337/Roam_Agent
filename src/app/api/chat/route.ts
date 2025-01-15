@@ -12,11 +12,11 @@ const AgentModelSchema = z.object({
 }).nullable().optional();
 
 const AgentToolSchema = z.object({
-    name: z.string(),
-    description: z.string(),
-    type: z.string().optional(),
-    id: z.string().optional(),
-    config: z.record(z.any()).optional(),
+  name: z.string(),
+  description: z.string(),
+  type: z.string().optional(),
+  id: z.string().optional(),
+  config: z.record(z.any()).optional(),
 });
 
 const AgentDatabaseSchema = z.object({
@@ -89,7 +89,20 @@ IMPORTANT: Your response must be a valid JSON object with this exact structure:
       "temperature": number,
       "maxTokens": number
     } | null,
-    "tools": [], // Always use empty array instead of null
+    "tools": [
+  {
+    "name": "PostgreSQL",                            // Required
+    "description": "Connects to PostgreSQL database", // Required
+    "type": "database",                             // Optional
+    "id": "tool1",                                  // Optional
+    "config": {                                     // Optional
+      "position": {
+        "x": 100,
+        "y": 100
+      }
+    }
+  }
+]
     "database": {
       "type": string,
       "url": string,
@@ -202,8 +215,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     if (!validationResult.success) {
       console.error('Validation error:', JSON.stringify(validationResult.error.format(), null, 2));
       return NextResponse.json(
-        { 
-          error: 'Invalid response structure from AI', 
+        {
+          error: 'Invalid response structure from AI',
           details: validationResult.error.format(),
           response: aiResponse
         },

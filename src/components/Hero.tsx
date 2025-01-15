@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button'
 
 export function Hero() {
   return (
-    <div className="min-h-screen flex items-center justify-center relative px-4">
-      <div className="max-w-4xl text-center z-10">
+    <div className="min-h-screen flex flex-col items-center justify-start pt-32 px-4">
+      <div className="max-w-4xl text-center mb-20">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -18,6 +18,7 @@ export function Hero() {
             {" "}Without Code
           </span>
         </motion.h1>
+        
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -27,6 +28,7 @@ export function Hero() {
           Create, customize, and deploy powerful AI agents through a simple chat interface. 
           Choose your framework, define your goals, and launch your agent in minutes.
         </motion.p>
+        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,6 +40,7 @@ export function Hero() {
               Create Agent
             </Button>
           </a>
+          {/*
           <Button 
             size="lg" 
             variant="outline" 
@@ -45,7 +48,9 @@ export function Hero() {
           >
             View Templates
           </Button>
+          */}
         </motion.div>
+        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -55,6 +60,38 @@ export function Hero() {
           No coding required • Multiple frameworks supported • Instant deployment
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ 
+          duration: 1, 
+          delay: 0.8,
+          ease: [0.2, 0.65, 0.3, 0.9] 
+        }}
+        className="w-full max-w-5xl px-4"
+      >
+        <div className="relative w-full pt-[56.25%]">
+          {/* Main iframe container */}
+          <div className="absolute inset-0 rounded-xl overflow-hidden bg-gray-900/80 shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10">
+            <iframe
+              src="/demo.webm"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          
+          {/* Decorative gradient overlay */}
+          <div className="absolute inset-0 pointer-events-none rounded-xl bg-gradient-to-t from-gray-900/20 to-transparent" />
+          
+          {/* Decorative edge glow */}
+          <div className="absolute -inset-px rounded-xl pointer-events-none bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-sm" />
+          
+          {/* Extra shadow for depth */}
+          <div className="absolute -inset-px rounded-xl pointer-events-none shadow-lg shadow-purple-500/10" />
+        </div>
+      </motion.div>
     </div>
   )
 }

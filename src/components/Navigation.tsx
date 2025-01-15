@@ -53,7 +53,7 @@ export function Navigation() {
                   </div>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              
+              {/*
               <NavigationMenuItem>
                 <Button 
                   variant="ghost" 
@@ -62,6 +62,7 @@ export function Navigation() {
                   Pricing
                 </Button>
               </NavigationMenuItem>
+              */}
               
               <NavigationMenuItem>
                 <Button 
@@ -76,17 +77,18 @@ export function Navigation() {
         </div>
 
         <div className="flex items-center gap-4">
+          {/*
           <Button 
             variant="ghost" 
             className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
           >
             Sign In
           </Button>
-          
+          */}
           <Button 
             className="bg-purple-600 hover:bg-purple-700 text-white"
           >
-            Start Free
+            Start
           </Button>
 
           <Button

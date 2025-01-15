@@ -1,9 +1,8 @@
-"use client"
-
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from "next-themes"
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
+import LLMSettingsDialog from './LLMAPIDialog'
 
 export function ChatNavigation() {
   const { theme, setTheme } = useTheme()
@@ -16,19 +15,20 @@ export function ChatNavigation() {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-4">
-            <a href="/">
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-600 bg-clip-text text-transparent"
-          >
-            Amal
-          </motion.div>
+          <a href="/">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className="text-xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-600 bg-clip-text text-transparent"
+            >
+              Amal
+            </motion.div>
           </a>
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <span className="text-sm text-gray-800 dark:text-gray-300">Agent System Online</span>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <LLMSettingsDialog />
           <Button
             variant="ghost"
             size="icon"
