@@ -19,13 +19,13 @@ export function Navigation() {
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed w-full z-50 px-4 py-3 bg-black/20 dark:bg-black/20 backdrop-blur-md border-b border-gray-800/50"
+      className="fixed w-full z-50 px-4 py-3 bg-white/80 dark:bg-black/20 backdrop-blur-md border-b border-gray-200/50 dark:border-gray-800/50"
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-8">
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent"
+            className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-600 bg-clip-text text-transparent"
           >
             Amal
           </motion.div>
@@ -33,21 +33,21 @@ export function Navigation() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white">
+                <NavigationMenuTrigger className="bg-transparent text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white">
                   Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <div className="grid w-96 gap-3 p-4 bg-white dark:bg-gray-900">
-                    <div className="p-4 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg">
-                      <h5 className="font-medium">Agent Builder</h5>
+                  <div className="grid w-96 gap-3 p-4 bg-white dark:bg-gray-900 shadow-lg rounded-lg">
+                    <div className="p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors">
+                      <h5 className="font-medium text-gray-900 dark:text-gray-100">Agent Builder</h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400">Create custom AI agents through chat</p>
                     </div>
-                    <div className="p-4 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg">
-                      <h5 className="font-medium">Visual Workflows</h5>
+                    <div className="p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors">
+                      <h5 className="font-medium text-gray-900 dark:text-gray-100">Visual Workflows</h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400">Design agent behavior visually</p>
                     </div>
-                    <div className="p-4 hover:bg-gray-100 dark:hover:bg-gray-800/50 rounded-lg">
-                      <h5 className="font-medium">Deployment</h5>
+                    <div className="p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg transition-colors">
+                      <h5 className="font-medium text-gray-900 dark:text-gray-100">Deployment</h5>
                       <p className="text-sm text-gray-600 dark:text-gray-400">One-click agent deployment</p>
                     </div>
                   </div>
@@ -57,7 +57,7 @@ export function Navigation() {
               <NavigationMenuItem>
                 <Button 
                   variant="ghost" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Pricing
                 </Button>
@@ -66,7 +66,7 @@ export function Navigation() {
               <NavigationMenuItem>
                 <Button 
                   variant="ghost" 
-                  className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   Templates
                 </Button>
@@ -78,7 +78,7 @@ export function Navigation() {
         <div className="flex items-center gap-4">
           <Button 
             variant="ghost" 
-            className="text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="text-gray-800 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800"
           >
             Sign In
           </Button>
@@ -92,7 +92,7 @@ export function Navigation() {
           <Button
             variant="ghost"
             size="icon"
-            className="w-9 h-9 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="w-9 h-9 hover:bg-gray-50 dark:hover:bg-gray-800"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />

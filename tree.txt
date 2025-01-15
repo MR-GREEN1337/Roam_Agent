@@ -1,0 +1,18 @@
+src/app
+├── (pages)
+│   └── chat
+│       ├── _components
+│       │   ├── AgentGraphDialog.tsx
+│       │   ├── ChatNavigation.tsx
+│       │   ├── CodeGenerationDialog.tsx
+│       │   ├── ConfigureAgentDialog.tsx
+│       │   ├── DeploymentDialog.tsx
+│       │   ├── FloatingButton.tsx
+│       │   └── MessageBubble.tsx
+│       └── page.tsx
+├── favicon.ico
+├── globals.css
+├── layout.tsx
+└── page.tsx
+
+4 directories, 12 files

@@ -51,3 +51,10 @@ import {
       icon: Zap
     }
   ]
+
+  export const frameworks = [
+    { value: 'crewai', label: 'CrewAI' },
+    { value: 'langchain', label: 'LangChain' },
+    { value: 'langgraph', label: 'LangGraph' },
+    { value: 'pydanticai', label: 'Pydantic AI' }
+  ];
